@@ -4,7 +4,7 @@ require_once 'config.php';
 $file = "orderid.txt";
 $linecount = 0;
 $handle = fopen($file, "r");
-while(!feof($handle)){
+while (!feof($handle)) {
 	$line = fgets($handle);
 	$linecount++;
 }
@@ -26,7 +26,7 @@ $attrs = array(
 
 if ($_POST['omiseSource']) {
 	$attrs['source'] = $_POST['omiseSource'];
-} 
+}
 
 if ($_POST['omiseToken']) {
 	$attrs['card'] = $_POST['omiseToken'];
