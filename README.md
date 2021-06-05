@@ -35,3 +35,7 @@ Set `return_uri`. This should be your store url. For example if you are running 
 ## Usage
 
 Start your preferred web server and open index.html on your browser.
+
+### With Docker
+
+run `docker-compose up` to start the application and open http://localhost:8080 on your browser to start testing.
