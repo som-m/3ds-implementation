@@ -1,3 +1,12 @@
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head> 
@@ -16,7 +25,7 @@
 
 			<script>
 				OmiseCard.configure({
-					publicKey: "pkey_test_"
+					publicKey: "<?php echo $_ENV['OMISE_PUBLIC_KEY']; ?>"
 				});
 
 				var button = document.querySelector("#checkoutButton");

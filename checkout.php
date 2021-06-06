@@ -1,4 +1,5 @@
 <?php
+
 require_once 'config.php';
 
 $file = "orderid.txt";
@@ -19,7 +20,7 @@ $metadata = array(
 $attrs = array(
 	'amount'		=> 10000,
 	'currency'		=> 'thb',
-	'return_uri'	=> 'https://merchant-site.com/complete.php/orderid=' . $order_id,
+	'return_uri'	=> 'http://localhost:8080/complete.php/orderid=' . $order_id,
 	'description'	=> 'Test payment. Order ID: ' . $order_id,
 	'metadata'		=> $metadata
 );

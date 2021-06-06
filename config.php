@@ -2,5 +2,8 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-define('OMISE_PUBLIC_KEY', 'pkey_test_');
-define('OMISE_SECRET_KEY', 'skey_test_');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+define('OMISE_PUBLIC_KEY', $_ENV['OMISE_PUBLIC_KEY']);
+define('OMISE_SECRET_KEY', $_ENV['OMISE_SECRET_KEY']);

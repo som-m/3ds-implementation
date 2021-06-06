@@ -1,4 +1,5 @@
 <?php
+
 require_once 'config.php';
 
 $path = $_SERVER['PATH_INFO'];
