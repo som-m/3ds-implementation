@@ -13,7 +13,7 @@ $charge_id = $search['data'][0]['id'];
 $charge = OmiseCharge::retrieve($charge_id);
 
 if ( $charge['authorized'] == false || $charge['paid'] == false) {
-	echo $charge['id'] . ': ' . $charge['failure_message'];
+  echo $charge['id'] . ': ' . $charge['failure_message'];
 } else {
-	echo $charge['id'] . ': ' . $charge['status'];
+  echo $charge['id'] . ': ' . $charge['status'];
 }
