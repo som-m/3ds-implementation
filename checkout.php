@@ -10,8 +10,8 @@ $charge = OmiseCharge::create(array(
 	'description'	=> 'Test payment. Order ID: ' . $order_id,
 	'metadata'		=> array(
 		'order_id'	=> $order_id
-	)
-	'card'			=> $_POST['omiseToken'];
+	),
+	'card'			=> $_POST['omiseToken']
 ));
 
 header('Location: ' . $charge['authorize_uri']);
