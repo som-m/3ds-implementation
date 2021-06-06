@@ -26,7 +26,7 @@ Set your Omise public and secret keys.
 
 ### checkout.php
 
-Set `return_uri`. This should be your store url. For example if you are running this locally: `'http://localhost:8888/complete.php/orderid='`
+Set `return_uri`. This should be your store url. For example if you are running this locally: `'http://localhost:8080/complete.php/orderid='`
 
 ```php
 22: 'return_uri'	=> 'https://merchant-site.com/complete.php/orderid=' . $order_id,
@@ -38,4 +38,4 @@ Start your preferred web server and open index.html on your browser.
 
 ### With Docker
 
-run `docker-compose up` to start the application and open http://localhost:8080 on your browser to start testing.
+Run `docker-compose up` to start the application and open http://localhost:8080 on your browser to start testing.
