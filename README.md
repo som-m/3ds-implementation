@@ -1,6 +1,6 @@
 # 3-D Secure Implementation
 
-This is an unofficial example of Omise 3-D Secure implementation using [Omise-PHP Library](https://github.com/omise/omise-php).
+This is an unofficial example for implementing [Omise-PHP Library](https://github.com/omise/omise-php).
 
 ## Installation
 
