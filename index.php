@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head> 
-    <title>Omise.js Pre-Built Form & Omise-PHP : 3-D Secure Implementation</title>
+    <title>Omise.js Pre-Built Form & Omise-PHP</title>
   </head>
   <body>
     <div>
@@ -30,6 +30,7 @@
             amount: 10000,
             currency: "THB",
             defaultPaymentMethod: "credit_card",
+            otherPaymentMethods: "internet_banking",
             onCreateTokenSuccess: (nonce) => {
               if (nonce.startsWith("tokn_")) {
                 form.omiseToken.value = nonce;
