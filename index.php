@@ -27,10 +27,10 @@
         button.addEventListener("click", (event) => {
           event.preventDefault();
           OmiseCard.open({
-            amount: 10000,
+            amount: 300000,
             currency: "THB",
             defaultPaymentMethod: "credit_card",
-            otherPaymentMethods: "internet_banking",
+            otherPaymentMethods: "internet_banking, installment",
             onCreateTokenSuccess: (nonce) => {
               if (nonce.startsWith("tokn_")) {
                 form.omiseToken.value = nonce;
