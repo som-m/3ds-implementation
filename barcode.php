@@ -4,8 +4,11 @@
     <title>Omise.js Pre-Built Form & Omise-PHP</title>
   </head>
   <body>
-    <div>
-      <img src="<?php echo $barcode; ?>">
-    </div>
+    <p>
+      <img src='<?php echo $charge['source']['references']['barcode']; ?>'>
+    </p>
+    <p>
+      Go to <a target = '_blank' href='<?php echo 'https://dashboard.omise.co/test/charges/' . $charge['id']; ?>'>dashboard</a> and mark as paid/failed.
+    </p>
   </body>
 </html>
