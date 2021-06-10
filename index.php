@@ -30,7 +30,7 @@
             amount: 300000,
             currency: "THB",
             defaultPaymentMethod: "credit_card",
-            otherPaymentMethods: "alipay, installment, internet_banking, rabbit_linepay, truemoney",
+            otherPaymentMethods: "alipay, bill_payment_tesco_lotus, installment, internet_banking, rabbit_linepay, truemoney",
             onCreateTokenSuccess: (nonce) => {
               if (nonce.startsWith("tokn_")) {
                 form.omiseToken.value = nonce;
