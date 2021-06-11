@@ -1,3 +1,3 @@
 FROM php:7.2-apache
 
-COPY . /var/www/html/public
+COPY . /var/www/html
