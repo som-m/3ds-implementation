@@ -28,7 +28,7 @@ if ($_POST['omiseSource']) {
 $charge = OmiseCharge::create($attrs);
 
 if ($charge['source']['type'] == 'bill_payment_tesco_lotus') {
-  include __DIR__ . '/../barcode.php';
+  include __DIR__ . '/../public/barcode.php';
 } else {
   header('Location: ' . $charge['authorize_uri']);
 }

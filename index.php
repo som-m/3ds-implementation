@@ -1,47 +1,16 @@
-<!DOCTYPE HTML>
-<html>
-  <head> 
-    <title>Omise.js Pre-Built Form & Omise-PHP</title>
-  </head>
-  <body>
-    <div>
-      <form id="checkoutForm" method="POST" action="/app/checkout.php">
-        <input type="hidden" name="omiseToken">
-        <input type="hidden" name="omiseSource">
-        <button type="submit" id="checkoutButton">Pay</button>
-      </form>
+<?php
 
-      <script type="text/javascript" src="https://cdn.omise.co/omise.js">
-      </script>
+$request = $_SERVER['REQUEST_URI'];
 
-      <script>
-        <?php require __DIR__ . '/config/config.php'; ?>
-
-        OmiseCard.configure({
-          publicKey: "<?php echo $_ENV['OMISE_PUBLIC_KEY']; ?>"
-        });
-
-        var button = document.querySelector("#checkoutButton");
-        var form = document.querySelector("#checkoutForm");
-
-        button.addEventListener("click", (event) => {
-          event.preventDefault();
-          OmiseCard.open({
-            amount: 300000,
-            currency: "THB",
-            defaultPaymentMethod: "credit_card",
-            otherPaymentMethods: "alipay, bill_payment_tesco_lotus, installment, internet_banking, rabbit_linepay, truemoney",
-            onCreateTokenSuccess: (nonce) => {
-              if (nonce.startsWith("tokn_")) {
-                form.omiseToken.value = nonce;
-              } else {
-                form.omiseSource.value = nonce;
-              };
-              form.submit();
-            }
-          });
-        });
-      </script>
-    </div>
-  </body>
-</html>
+switch ($request) {
+  case '/' :
+    require __DIR__ . '/public/index.php';
+    break;
+  case '' :
+    require __DIR__ . '/public/index.php';
+    break;
+  default:
+    http_response_code(404);
+    require __DIR__ . '/public/404.php';
+    break;
+}
