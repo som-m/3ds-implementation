@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require __DIR__ . '/config/config.php';
 
 $order_id = date('YmdHis') . rand(100, 999);
 

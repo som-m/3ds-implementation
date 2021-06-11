@@ -5,7 +5,7 @@
   </head>
   <body>
     <div>
-      <form id="checkoutForm" method="POST" action="/checkout.php">
+      <form id="checkoutForm" method="POST" action="/../app/checkout.php">
         <input type="hidden" name="omiseToken">
         <input type="hidden" name="omiseSource">
         <button type="submit" id="checkoutButton">Pay</button>
@@ -15,7 +15,7 @@
       </script>
 
       <script>
-        <?php require_once 'config.php'; ?>
+        <?php require __DIR__ . '/config/config.php'; ?>
 
         OmiseCard.configure({
           publicKey: "<?php echo $_ENV['OMISE_PUBLIC_KEY']; ?>"
