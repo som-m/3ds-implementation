@@ -5,7 +5,7 @@
   </head>
   <body>
     <div>
-      <form id="checkoutForm" method="POST" action="/../app/checkout.php">
+      <form id="checkoutForm" method="POST" action="/../checkout">
         <input type="hidden" name="omiseToken">
         <input type="hidden" name="omiseSource">
         <button type="submit" id="checkoutButton">Pay</button>
