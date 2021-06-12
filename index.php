@@ -24,6 +24,10 @@ $router->map('POST', '/checkout', function() {
   require __DIR__ . '/app/checkout.php';
 });
 
+$router->map('POST', '/status', function() {
+  require __DIR__ . '/app/status.php';
+});
+
 $router->map('POST', '/webhook', function() {
   require __DIR__ . '/app/webhook.php';
 });
