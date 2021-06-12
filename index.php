@@ -8,16 +8,20 @@ $router->map('GET', '/', function() {
 	require __DIR__ . '/public/index.php';
 });
 
-$router->map('GET', '/barcode/[*:charge_id]', function($charge_id) {
+$router->map('GET', '/[*:charge_id]/barcode', function($charge_id) {
 	require __DIR__ . '/public/barcode.php';
 });
 
-$router->map('POST', '/checkout', function() {
-	require __DIR__ . '/app/checkout.php';
+$router->map('GET', '/[*:charge_id]/type=[*:type]&status=[a:status]', function($type, $charge_id, $status) {
+	require __DIR__ . '/public/status.php';
 });
 
 $router->map('GET', '/complete/[i:order_id]', function($order_id) {
 	require __DIR__ . '/app/complete.php';
+});
+
+$router->map('POST', '/checkout', function() {
+	require __DIR__ . '/app/checkout.php';
 });
 
 $match = $router->match();
