@@ -26,7 +26,16 @@ if ($_POST['omiseSource']) {
 $charge = OmiseCharge::create($attrs);
 
 if ($charge['source']['type'] == 'bill_payment_tesco_lotus') {
-  header('Location: /../' . $charge['id'] . '/barcode');
+  header('Location: /../' . $order_id . '/complete');
 } else {
   header('Location: ' . $charge['authorize_uri']);
 }
+
+$charge_id = $charge['id'];
+$type = $charge['description'];
+$barcode = $charge['source']['references']['barcode'];
+$status = $charge['status'];
+
+$content = $order_id . ',' . $charge_id . ',' . $type . ',' . $barcode . ',' . $status;
+
+file_put_contents('status.txt', PHP_EOL . $content, FILE_APPEND);
