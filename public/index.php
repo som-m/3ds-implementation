@@ -1,4 +1,4 @@
-<?php include_once 'header.php'; ?>
+<?php include_once __dir__ . '/../templates/header.php'; ?>
 
 <div>
   <p>Click the button below to open the checkout form.</p>
@@ -42,4 +42,4 @@
   </script>
 </div>
 
-<?php include_once 'footer.php'; ?>
+<?php include_once __dir__ . '/../templates/footer.php'; ?>

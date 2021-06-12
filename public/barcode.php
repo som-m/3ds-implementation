@@ -1,6 +1,6 @@
 <?php
 
-include_once 'header.php';
+include_once __dir__ . '/../templates/header.php';
 
 $charge = OmiseCharge::retrieve($charge_id);
 
@@ -14,4 +14,4 @@ $charge = OmiseCharge::retrieve($charge_id);
   Go to <a target = "_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge['id']; ?>">dashboard</a> and mark as paid/failed.
 </p>
 
-<?php include_once 'footer.php'; ?>
+<?php include_once __dir__ . '/../templates/footer.php'; ?>
