@@ -1,11 +1,7 @@
-<!DOCTYPE HTML>
-<html>
-  <head> 
-    <title>Omise.js Pre-Built Form & Omise-PHP</title>
-  </head>
-  <body>
-    <p>
-      The page you are looking for does not exist.
-    </p>
-  </body>
-</html>
+<?php include_once 'header.php'; ?>
+
+<p>
+  The page you are looking for does not exist.
+</p>
+
+<?php include_once 'footer.php'; ?>
