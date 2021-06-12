@@ -15,8 +15,6 @@
       </script>
 
       <script>
-        <?php require __DIR__ . '/../config/config.php'; ?>
-
         OmiseCard.configure({
           publicKey: "<?php echo $_ENV['OMISE_PUBLIC_KEY']; ?>"
         });

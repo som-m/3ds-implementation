@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/../config/config.php';
-
 $path = $_SERVER['PATH_INFO'];
 $order_id = filter_var($path, FILTER_SANITIZE_NUMBER_INT);
 

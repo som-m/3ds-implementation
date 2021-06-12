@@ -1,13 +1,11 @@
 <?php
 
-require __DIR__ . '/../config/config.php';
-
 $order_id = date('YmdHis') . rand(100, 999);
 
 $attrs = array(
   'amount'      => 300000,
   'currency'    => 'thb',
-  'return_uri'  => 'http://localhost:8080/complete/orderid=' . $order_id,
+  'return_uri'  => 'http://localhost:8080/complete/' . $order_id,
   'metadata'    => array(
     'order_id'  => $order_id
   ),
@@ -28,7 +26,7 @@ if ($_POST['omiseSource']) {
 $charge = OmiseCharge::create($attrs);
 
 if ($charge['source']['type'] == 'bill_payment_tesco_lotus') {
-  include __DIR__ . '/../barcode';
+  header('Location: /../barcode/' . $charge['id']);
 } else {
   header('Location: ' . $charge['authorize_uri']);
 }

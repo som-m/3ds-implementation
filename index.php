@@ -1,25 +1,29 @@
 <?php
 
-$request = $_SERVER['REQUEST_URI'];
+require_once __DIR__ . '/config/config.php';
 
-switch ($request) {
-  case '':
-    require __DIR__ . '/public/index.php';
-    break;
-  case '/':
-    require __DIR__ . '/public/index.php';
-    break;
-  case '/barcode':
-    require __DIR__ . '/public/barcode.php';
-    break;
-  case '/checkout':
-    require __DIR__ . '/app/checkout.php';
-    break;
-  case '/complete': // need to fix this
-    require __DIR__ . '/app/complete.php';
-    break;
-  default:
-    http_response_code(404);
-    require __DIR__ . '/public/404.php';
-    break;
+$router = new AltoRouter();
+
+$router->map('GET', '/', function() {
+	require __DIR__ . '/public/index.php';
+});
+
+$router->map('GET', '/barcode/[*:charge_id]', function($charge_id) {
+	require __DIR__ . '/public/barcode.php';
+});
+
+$router->map('POST', '/checkout', function() {
+	require __DIR__ . '/app/checkout.php';
+});
+
+$router->map('GET', '/complete/[i:order_id]', function($order_id) {
+	require __DIR__ . '/app/complete.php';
+});
+
+$match = $router->match();
+
+if (is_array($match) && is_callable($match['target'])) {
+	call_user_func_array($match['target'], $match['params']); 
+} else {
+	require __DIR__ . '/public/404.php';
 }
