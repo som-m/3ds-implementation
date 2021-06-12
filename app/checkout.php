@@ -5,7 +5,7 @@ $order_id = date('YmdHis') . rand(100, 999);
 $attrs = array(
   'amount'      => 300000,
   'currency'    => 'thb',
-  'return_uri'  => 'http://localhost:8080/complete/' . $order_id,
+  'return_uri'  => 'http://localhost:8080/' . $order_id . '/complete',
   'metadata'    => array(
     'order_id'  => $order_id
   ),

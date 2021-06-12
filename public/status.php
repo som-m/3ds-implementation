@@ -1,7 +1,9 @@
-<?php
+<?php include_once __dir__ . '/../templates/header.php'; ?>
 
-include_once __dir__ . '/../templates/header.php';
+<div>
+  <p>
+    <?php echo $charge_id . ' via ' . $type . ': ' . $status; ?>
+  </p>
+</div>
 
-echo $charge_id . ' via ' . $type . ': ' . $status;
-
-include_once __dir__ . '/../templates/footer.php';
+<?php include_once __dir__ . '/../templates/footer.php'; ?>
