@@ -24,6 +24,10 @@ $router->map('POST', '/checkout', function() {
   require __DIR__ . '/app/checkout.php';
 });
 
+$router->map('POST', '/webhook', function() {
+  require __DIR__ . '/app/webhook.php';
+});
+
 $match = $router->match();
 
 if (is_array($match) && is_callable($match['target'])) {
