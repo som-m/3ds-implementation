@@ -4,7 +4,7 @@ $payload = file_get_contents('php://input');
 
 $event = json_decode($payload);
 
-if ($event->key == 'charge.complete') {
+if ($event->key == 'charge.complete' && $event->data->status) {
   $charge_id = $event->data->id;
 
   $charge = OmiseCharge::retrieve($charge_id);
