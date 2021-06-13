@@ -8,7 +8,7 @@ $charge = OmiseCharge::retrieve($charge_id);
 
 header('Location: /../' . $charge['id'] . '/status');
 
-$input = fopen('status.csv', 'r');
+$input = fopen('charge.csv', 'r');
 $output = fopen('status-temp.csv', 'w');
 
 while (($row = fgetcsv($input)) !== FALSE) {
@@ -24,6 +24,6 @@ ftruncate($output, $stat['size']-1);
 fclose($input);
 fclose($output);
 
-unlink('status.csv');
+unlink('charge.csv');
 
-rename('status-temp.csv', 'status.csv');
+rename('status-temp.csv', 'charge.csv');

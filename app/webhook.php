@@ -9,7 +9,7 @@ if ($event->key == 'charge.complete' && $event->data->source->type == 'bill_paym
 
   $charge = OmiseCharge::retrieve($charge_id);
 
-  $input = fopen('status.csv', 'r');
+  $input = fopen('charge.csv', 'r');
   $output = fopen('status-temp.csv', 'w');
   
   while (($row = fgetcsv($input)) !== FALSE) {
@@ -25,7 +25,7 @@ if ($event->key == 'charge.complete' && $event->data->source->type == 'bill_paym
   fclose($input);
   fclose($output);
 
-  unlink('status.csv');
+  unlink('charge.csv');
 
-  rename('status-temp.csv', 'status.csv');
+  rename('status-temp.csv', 'charge.csv');
 }

@@ -4,7 +4,7 @@ class Charge {
   public $charge;
 
   function get($charge_id) {
-    $file = fopen('status.csv', 'r');
+    $file = fopen('charge.csv', 'r');
 
     while (($row = fgetcsv($file)) !== FALSE) {
       if ($row[1] == $charge_id) {

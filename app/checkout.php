@@ -38,4 +38,4 @@ $status = $charge['status'];
 
 $content = $order_id . ',' . $charge_id . ',' . $type . ',' . $barcode . ',' . $status;
 
-file_put_contents('status.csv', PHP_EOL . $content, FILE_APPEND);
+file_put_contents('charge.csv', PHP_EOL . $content, FILE_APPEND);
