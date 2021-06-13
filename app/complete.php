@@ -1,8 +1,10 @@
 <?php
 
-$search = OmiseCharge::search($order_id);
+include_once __dir__ . '/../app/charge.php';
 
-$charge_id = $search['data'][0]['id'];
+$charge = new Charge();
+$charge->get($order_id);
+$charge_id = $charge->charge_id();
 
 $charge = OmiseCharge::retrieve($charge_id);
 

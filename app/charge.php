@@ -3,11 +3,11 @@
 class Charge {
   public $charge;
 
-  function get($charge_id) {
+  function get($id) {
     $file = fopen('charge.csv', 'r');
 
     while (($row = fgetcsv($file)) !== FALSE) {
-      if ($row[1] == $charge_id) {
+      if ($row[0] == $id || $row[1] == $id) {
         $this->charge = array($row[0], $row[1], $row[2], $row[3], $row[4]);
         break;
       }
