@@ -1,10 +1,6 @@
 <?php
 
-$metadata = array(
-  'order_id'  => $order_id
-);
-
-$search = OmiseCharge::search($metadata);
+$search = OmiseCharge::search($order_id);
 
 $charge_id = $search['data'][0]['id'];
 
