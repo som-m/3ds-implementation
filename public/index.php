@@ -11,9 +11,6 @@
     <button type="submit" id="checkoutButton">Pay</button>
   </form>
 
-  <script type="text/javascript" src="https://cdn.omise.co/omise.js">
-  </script>
-
   <script>
     OmiseCard.configure({
       publicKey: "<?php echo $_ENV['OMISE_PUBLIC_KEY']; ?>"

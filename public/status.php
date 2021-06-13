@@ -25,8 +25,7 @@ fclose($file);
   </p>
 </div>
 
-<!-- to do: only show if type == bill_payment_tesco_lotus -->
-<div id="barcode">
+<div id="barcode" style="display: none;">
   <p>
     <img src="<?php echo $barcode; ?>">
   </p>
@@ -36,6 +35,14 @@ fclose($file);
   </p>
 </div>
 
-<!-- to do: hide barcode div after payment is successful and display updated status on status div, see webhook.php -->
+<script>
+var type = "<?php echo $type ?>";
+
+if (type == "bill_payment_tesco_lotus") {
+  document.getElementById('barcode').setAttribute("style", "display:block");
+}
+</script>
+
+<!-- to do: for bill payment, hide barcode div after payment is successful and display updated status on status div -->
 
 <?php include_once __dir__ . '/../templates/footer.php'; ?>
