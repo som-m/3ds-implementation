@@ -28,16 +28,20 @@ class Charge {
       fputcsv($file_temp, $row);
     }
 
-    $stat = fstat($file_temp);
-
-    ftruncate($file_temp, $stat['size']-1);
-
     fclose($file);
     fclose($file_temp);
 
     unlink('charge.csv');
 
     rename('charge-temp.csv', 'charge.csv');
+  }
+
+  function insert($order) {
+    $file = fopen('charge.csv', 'a');
+
+    fputcsv($file, $order);
+
+    fclose($file);
   }
 
   function order_id() {

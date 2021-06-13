@@ -1,31 +1,16 @@
 <?php
 
+include_once __dir__ . '/../app/charge.php';
+
 $payload = file_get_contents('php://input');
 
 $event = json_decode($payload);
 
 if ($event->key == 'charge.complete' && $event->data->source->type == 'bill_payment_tesco_lotus') {
   $charge_id = $event->data->id;
+  $status = $event->data->status;
 
-  $charge = OmiseCharge::retrieve($charge_id);
-
-  $input = fopen('charge.csv', 'r');
-  $output = fopen('status-temp.csv', 'w');
-  
-  while (($row = fgetcsv($input)) !== FALSE) {
-    if ($row[1] == $charge['id']) {
-      $row[4] = $charge['status'];
-    }
-    fputcsv($output, $row);
-  }
-
-  $stat = fstat($output);
-  ftruncate($output, $stat['size']-1);
-
-  fclose($input);
-  fclose($output);
-
-  unlink('charge.csv');
-
-  rename('status-temp.csv', 'charge.csv');
+  $charge = new Charge();
+  $charge->get($charge_id);
+  $charge->update_status($charge_id, $status);
 }
