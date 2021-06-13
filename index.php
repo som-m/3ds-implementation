@@ -12,7 +12,7 @@ $router->map('GET', '/[*:charge_id]/status', function($charge_id) {
   require __DIR__ . '/public/status.php';
 });
 
-$router->map('GET', '/[i:order_id]/complete', function($order_id) {
+$router->map('GET', '/[*:order_id]/complete', function($order_id) {
   require __DIR__ . '/app/complete.php';
 });
 

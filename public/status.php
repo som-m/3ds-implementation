@@ -2,29 +2,23 @@
 
 include_once __dir__ . '/../templates/header.php';
 
-$row = array();
+$file = fopen('status.csv','r');
 
-$handle = @fopen("status.txt", "r");
-if ($handle) {
-  while (!feof($handle)) {
-    $buffer = fgets($handle);
-    if(strpos($buffer, $charge_id) !== FALSE)
-      $row[] = $buffer;
+while (($row = fgetcsv($file)) !== FALSE) {
+  if ($row[1] == $charge_id) {
+    $order_id = $row[0];
+    $charge_id = $row[1];
+    $type = $row[2];
+    $barcode = $row[3];
+    $status = $row[4];
+    break;
   }
-  fclose($handle);
 }
 
-$column = explode(',', $row[0]);
-
-$order_id = $column[0];
-$charge_id = $column[1];
-$type = $column[2];
-$barcode = $column[3];
-$status = $column[4];
+fclose($file);
 
 ?>
 
-<!-- note: status here is not correct, see complete.php and webhook.php -->
 <div id="status">
   <p>
     <?php echo $charge_id . ' via ' . $type . ': ' . $status; ?>
@@ -38,10 +32,10 @@ $status = $column[4];
   </p>
 
   <p>
-    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge_id; ?>">dashboard</a> and mark as paid/failed, then click the button below to check the status.
+    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge_id; ?>">dashboard</a> and mark as paid/failed.
   </p>
 </div>
 
-<!-- to do: hide barcode div after payment is successful and display updated status on status div -->
+<!-- to do: hide barcode div after payment is successful and display updated status on status div, see webhook.php -->
 
 <?php include_once __dir__ . '/../templates/footer.php'; ?>

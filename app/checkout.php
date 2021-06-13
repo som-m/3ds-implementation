@@ -1,6 +1,6 @@
 <?php
 
-$order_id = date('YmdHis') . rand(100, 999);
+$order_id = date('Ymd-His') . rand(100, 999);
 
 $attrs = array(
   'amount'      => 300000,
@@ -38,4 +38,4 @@ $status = $charge['status'];
 
 $content = $order_id . ',' . $charge_id . ',' . $type . ',' . $barcode . ',' . $status;
 
-file_put_contents('status.txt', PHP_EOL . $content, FILE_APPEND);
+file_put_contents('status.csv', PHP_EOL . $content, FILE_APPEND);
