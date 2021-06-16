@@ -20,18 +20,27 @@ $charge->get($charge_id);
   </p>
 
   <p>
-    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge->charge_id(); ?>">dashboard</a> and mark as paid/failed.
+    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge->charge_id(); ?>">dashboard</a> and mark as paid/failed. Refresh the page or click the button below to get the latest status of this charge.
   </p>
+
+  <button onclick="refresh()">Refresh</button>
 </div>
 
 <script>
-var type = '<?php echo $charge->type(); ?>';
-
-if (type == 'bill_payment_tesco_lotus') {
-  document.getElementById('barcode').setAttribute("style", "display:block");
+function refresh() {
+  location.reload();
 }
-</script>
 
-<!-- to do: for bill payment, hide barcode div after payment is successful and display updated status on status div -->
+function show_barcode() {
+  var type = '<?php echo $charge->type(); ?>';
+  var status = '<?php echo $charge->status(); ?>';
+
+  if (type == 'bill_payment_tesco_lotus' && status == 'pending') {
+    document.getElementById('barcode').setAttribute("style", "display:block");
+  }
+}
+
+show_barcode();
+</script>
 
 <?php include_once __dir__ . '/../templates/footer.php'; ?>
