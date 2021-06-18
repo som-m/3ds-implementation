@@ -35,6 +35,7 @@ function reqListener() {
 
   if (!doc.innerHTML.match(/pending/)) {
     clearInterval(refreshLoop);
+    document.getElementById('barcode').setAttribute("style", "display:none");
   }
 }
 
@@ -45,7 +46,7 @@ function refresh() {
   oReq.send();
 }
 
-function show_barcode() {
+function showBarcode() {
   var type = '<?php echo $charge->type(); ?>';
   var status = '<?php echo $charge->status(); ?>';
 
@@ -54,7 +55,7 @@ function show_barcode() {
   }
 }
 
-show_barcode();
+showBarcode();
 
 refreshLoop = setInterval(refresh, 5000);
 </script>
