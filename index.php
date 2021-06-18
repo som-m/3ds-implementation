@@ -8,6 +8,10 @@ $router->map('GET', '/', function() {
   require __DIR__ . '/public/index.php';
 });
 
+$router->map('GET', '/[*:charge_id]/status-fragment', function($charge_id) {
+  require __DIR__ . '/public/status.fragment.php';
+});
+
 $router->map('GET', '/[*:charge_id]/status', function($charge_id) {
   require __DIR__ . '/public/status.php';
 });

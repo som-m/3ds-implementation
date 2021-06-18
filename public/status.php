@@ -22,13 +22,27 @@ $charge->get($charge_id);
   <p>
     Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge->charge_id(); ?>">dashboard</a> and mark as paid/failed. Refresh the page or click the button below to get the latest status of this charge.
   </p>
-
-  <button onclick="refresh()">Refresh</button>
 </div>
 
-<script>
+<script type="text/javascript">
+var refreshLoop;
+
+function reqListener() {
+  doc = new DOMParser().parseFromString(this.responseText, "text/html").body.firstChild;
+
+  document.getElementById("status").replaceChildren();
+  document.getElementById("status").appendChild(doc);
+
+  if (!doc.innerHTML.match(/pending/)) {
+    clearInterval(refreshLoop);
+  }
+}
+
 function refresh() {
-  location.reload();
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", reqListener);
+  oReq.open("GET", window.location + "-fragment");
+  oReq.send();
 }
 
 function show_barcode() {
@@ -41,6 +55,8 @@ function show_barcode() {
 }
 
 show_barcode();
+
+refreshLoop = setInterval(refresh, 5000);
 </script>
 
 <?php include_once __dir__ . '/../templates/footer.php'; ?>
