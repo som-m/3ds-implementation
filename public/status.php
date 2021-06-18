@@ -20,7 +20,7 @@ $charge->get($charge_id);
   </p>
 
   <p>
-    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge->charge_id(); ?>">dashboard</a> and mark as paid/failed. Refresh the page or click the button below to get the latest status of this charge.
+    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge->charge_id(); ?>">Omise dashboard</a> and mark the charge as paid or failed. Once the charge is completed, this section will disappear and the updated status will be displayed.
   </p>
 </div>
 
