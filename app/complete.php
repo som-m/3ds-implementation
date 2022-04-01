@@ -1,8 +1,8 @@
 <?php
 
-include_once __dir__ . '/../app/charge.php';
+include_once __dir__ . '/../app/order.php';
 
-$order = new Charge();
+$order = new Order();
 $order->get($order_id);
 
 $charge_id = $order->charge_id();

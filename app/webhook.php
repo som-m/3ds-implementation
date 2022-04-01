@@ -1,6 +1,6 @@
 <?php
 
-include_once __dir__ . '/../app/charge.php';
+include_once __dir__ . '/../app/order.php';
 
 $payload = file_get_contents('php://input');
 
@@ -10,7 +10,7 @@ if ($event->key == 'charge.complete' && $event->data->source->type == 'bill_paym
   $charge_id = $event->data->id;
   $status = $event->data->status;
 
-  $charge = new Charge();
-  $charge->get($charge_id);
-  $charge->update_status($charge_id, $status);
+  $order = new Order();
+  $order->get($charge_id);
+  $order->update_status($charge_id, $status);
 }

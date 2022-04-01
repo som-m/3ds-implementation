@@ -1,12 +1,12 @@
 <?php
 
-include_once __dir__ . '/../app/charge.php';
+include_once __dir__ . '/../app/order.php';
 
-$charge = new Charge();
-$charge->get($charge_id);
+$order = new Order();
+$order->get($charge_id);
 
 ?>
 
 <p>
-  <?php echo $charge->charge_id() . ' via ' . $charge->type() . ': ' . $charge->status(); ?>
+  <?php echo $order->charge_id() . ' via ' . $order->paymemt_type() . ': ' . $order->status(); ?>
 </p>
