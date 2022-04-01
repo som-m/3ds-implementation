@@ -1,6 +1,6 @@
 <?php
 
-include_once __dir__ . '/../app/charge.php';
+include_once __dir__ . '/../app/order.php';
 
 $order_id = date('Ymd-His') . rand(100, 999);
 
@@ -28,13 +28,13 @@ if ($_POST['omiseSource']) {
 $charge = OmiseCharge::create($attrs);
 
 $charge_id = $charge['id'];
-$type = $charge['description'];
+$paymemt_type = $charge['description'];
 $barcode = $charge['source']['references']['barcode'];
 $status = $charge['status'];
 
-$order_data = array($order_id, $charge_id, $type, $barcode, $status);
+$order_data = array($order_id, $charge_id, $paymemt_type, $barcode, $status);
 
-$order = new Charge();
+$order = new Order();
 $order->insert($order_data);
 
 if ($charge['source']['type'] == 'bill_payment_tesco_lotus') {

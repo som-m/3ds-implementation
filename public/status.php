@@ -1,26 +1,26 @@
 <?php
 
 include_once __dir__ . '/../templates/header.php';
-include_once __dir__ . '/../app/charge.php';
+include_once __dir__ . '/../app/order.php';
 
-$charge = new Charge();
-$charge->get($charge_id);
+$order = new Order();
+$order->get($charge_id);
 
 ?>
 
 <div id="status">
   <p>
-    <?php echo $charge->charge_id() . ' via ' . $charge->type() . ': ' . $charge->status(); ?>
+    <?php echo $order->charge_id() . ' via ' . $order->paymemt_type() . ': ' . $order->status(); ?>
   </p>
 </div>
 
 <div id="barcode" style="display: none;">
   <p>
-    <img src="<?php echo $charge->barcode(); ?>">
+    <img src="<?php echo $order->barcode(); ?>">
   </p>
 
   <p>
-    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $charge->charge_id(); ?>">Omise dashboard</a> and mark the charge as paid or failed. Once the charge is completed, this section will disappear and the updated status will be displayed.
+    Go to <a target="_blank" href="<?php echo 'https://dashboard.omise.co/test/charges/' . $order->charge_id(); ?>">Omise dashboard</a> and mark the charge as paid or failed. Once the charge is completed, this section will disappear and the updated status will be displayed.
   </p>
 </div>
 
@@ -47,10 +47,10 @@ function refresh() {
 }
 
 function showBarcode() {
-  var type = '<?php echo $charge->type(); ?>';
-  var status = '<?php echo $charge->status(); ?>';
+  var paymemt_type = '<?php echo $order->paymemt_type(); ?>';
+  var status = '<?php echo $order->status(); ?>';
 
-  if (type == 'bill_payment_tesco_lotus' && status == 'pending') {
+  if (paymemt_type == 'bill_payment_tesco_lotus' && status == 'pending') {
     document.getElementById('barcode').setAttribute("style", "display:block");
   }
 }

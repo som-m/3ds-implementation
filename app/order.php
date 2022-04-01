@@ -1,14 +1,14 @@
 <?php
 
-class Charge {
-  public $charge;
+class Order {
+  public $order;
 
   function get($id) {
-    $file = fopen('charge.csv', 'r');
+    $file = fopen('order.csv', 'r');
 
     while (($row = fgetcsv($file)) !== FALSE) {
       if ($row[0] == $id || $row[1] == $id) {
-        $this->charge = array($row[0], $row[1], $row[2], $row[3], $row[4]);
+        $this->order = array($row[0], $row[1], $row[2], $row[3], $row[4]);
 
         break;
       }
@@ -18,8 +18,8 @@ class Charge {
   }
 
   function update_status($id, $status) {
-    $file = fopen('charge.csv', 'r');
-    $file_temp = fopen('charge-temp.csv', 'w');
+    $file = fopen('order.csv', 'r');
+    $file_temp = fopen('order-temp.csv', 'w');
 
     while (($row = fgetcsv($file)) !== FALSE) {
       if ($row[1] == $id) {
@@ -31,13 +31,13 @@ class Charge {
     fclose($file);
     fclose($file_temp);
 
-    unlink('charge.csv');
+    unlink('order.csv');
 
-    rename('charge-temp.csv', 'charge.csv');
+    rename('order-temp.csv', 'order.csv');
   }
 
   function insert($order) {
-    $file = fopen('charge.csv', 'a');
+    $file = fopen('order.csv', 'a');
 
     fputcsv($file, $order);
 
@@ -45,22 +45,22 @@ class Charge {
   }
 
   function order_id() {
-    return $this->charge[0];
+    return $this->order[0];
   }
 
   function charge_id() {
-    return $this->charge[1];
+    return $this->order[1];
   }
 
-  function type() {
-    return $this->charge[2];
+  function paymemt_type() {
+    return $this->order[2];
   }
 
   function barcode() {
-    return $this->charge[3];
+    return $this->order[3];
   }
 
   function status() {
-    return $this->charge[4];
+    return $this->order[4];
   }
 }
